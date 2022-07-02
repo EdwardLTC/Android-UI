@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/animation.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/border_checkbox.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/border_head_negative.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/border_main_layout.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/border_negative_layout_bot_right_left.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/border_recyleview_component.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/checkbox_selector.xml" value="0.162" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/checked.xml" value="0.162" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/circle_button.xml" value="0.162" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/circle_checkbox.xml" value="0.162" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/ic_checked.xml" value="0.162" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/ic_menu_camera.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/ic_unchecked.xml" value="0.162" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/img_border.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/navigation_border.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/side_nav_bar.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/drawable/unchecked.xml" value="0.162" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/layout/activity_main.xml" value="0.19746376811594202" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/layout/app_bar_main.xml" value="0.2" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/layout/content_main.xml" value="0.18" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/layout/dialog_component.xml" value="0.2" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/layout/fragment_gallery.xml" value="0.19746376811594202" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/layout/fragment_slideshow.xml" value="0.19746376811594202" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/layout/nav_header_main.xml" value="0.19746376811594202" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/layout/recycleview_component.xml" value="0.75" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/menu/activity_main_drawer.xml" value="0.26927083333333335" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/menu/animation.xml" value="0.26927083333333335" />
+        <entry key="..\:/Android UI/Assigment/app/src/main/res/menu/main.xml" value="0.26927083333333335" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

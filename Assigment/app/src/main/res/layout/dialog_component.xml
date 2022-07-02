@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/border_main_layout"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:textAlignment="center"
+        android:layout_marginTop="250dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#3450a1"
+        android:hint="Create New task"
+        android:textSize="40dp"
+        android:id="@+id/newTask"
+        android:textColor="@color/white"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:layout_marginTop="270dp"
+        android:id="@+id/fab"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="19dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/circle_button"
+        app:backgroundTint="@null"
+        />
+
+</LinearLayout>
