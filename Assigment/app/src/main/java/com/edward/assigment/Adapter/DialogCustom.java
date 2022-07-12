@@ -1,6 +1,7 @@
 package com.edward.assigment.Adapter;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,23 +12,29 @@ import android.widget.Button;
 import android.widget.EditText;
 
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.edward.assigment.Model.TaskDAO;
 import com.edward.assigment.Model.TaskToDo;
 import com.edward.assigment.R;
+
+import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class DialogCustom extends DialogFragment {
 
     private EditText _EditTex;
-    private Button _button;
-    private TaskAdapter _TaskAdapter;
+    private TaskDAO _TD;
 
     public static DialogCustom newInstance() {
-        DialogCustom frag = new DialogCustom();
-        return frag;
+        return new DialogCustom();
     }
 
     @Override
@@ -39,30 +46,29 @@ public class DialogCustom extends DialogFragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        _TD = new TaskDAO(getActivity());
         _EditTex = view.findViewById(R.id.newTask);
-        _button = view.findViewById(R.id.fab);
-        _TaskAdapter = new TaskAdapter(getActivity());
 
+        Button _button = view.findViewById(R.id.fab);
         _button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (!_EditTex.getText().toString().isEmpty()) {//solve with database
-                    String txt = _EditTex.getText().toString();
-                    try {
-                        _TaskAdapter.addTask(new TaskToDo(txt));
-                        Log.d("tnt", "onClick: ");
-                    }catch (Exception e){
-                        Log.d(e.toString(), "onClick: ");
-                    }
+                     String txt = _EditTex.getText().toString();
+                     _TD.insertTask(new TaskToDo(txt));
 
                 }
                 dismiss();
             }
         });
 
-        getDialog().getWindow().setSoftInputMode(
-                WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+//        Objects.requireNonNull(getDialog()).getWindow().setSoftInputMode(
+//                WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
     }
 }
 

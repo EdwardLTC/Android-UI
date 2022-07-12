@@ -24,7 +24,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="50dp"
         android:layout_width="wrap_content"
-        android:layout_height="400dp">
+        android:layout_height="300dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_marginTop="80dp"
@@ -33,6 +33,15 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-
+    <Button
+        android:id="@+id/fab"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="19dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/circle_button"
+        app:backgroundTint="@null"
+        />
 
 </LinearLayout>

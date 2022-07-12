@@ -15,21 +15,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.edward.assigment.Model.TaskDAO;
 import com.edward.assigment.Model.TaskToDo;
 import com.edward.assigment.R;
 
 import java.util.ArrayList;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder>{
-
-    private Context _context;
     private ArrayList<TaskToDo> _ListTask;
+    private TaskDAO _TD;
 
-    public TaskAdapter(Context context){
-       this._context=context;
+    public TaskAdapter(Context context) {
+        _TD = new TaskDAO(context);
+        _ListTask = _TD.getList();
     }
 
     @NonNull
@@ -37,8 +40,19 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     public TaskViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View _view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recycleview_component,parent,false);
-
         return new TaskViewHolder(_view);
+    }
+
+    public class TaskViewHolder extends RecyclerView.ViewHolder{
+        private final TextView _task;
+        private final CheckBox _checkbox;
+
+        public TaskViewHolder(@NonNull View itemView) {
+            super(itemView);
+            _task = itemView.findViewById(R.id.textView);
+            _checkbox =  itemView.findViewById(R.id.checkbox);
+
+        }
     }
 
     @Override
@@ -68,33 +82,16 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return _ListTask.size();
     }
 
-    public class TaskViewHolder extends RecyclerView.ViewHolder{
-        private LinearLayout _linearLayout;
-        private  TextView _task;
-        private CheckBox _checkbox;
-        public TaskViewHolder(@NonNull View itemView) {
-            super(itemView);
-            _task = itemView.findViewById(R.id.textView);
-            _checkbox =  itemView.findViewById(R.id.checkbox);
-            _linearLayout =itemView.findViewById(R.id.layout_component);
-        }
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    public void setData(ArrayList<TaskToDo> m_ListTask){
-        _ListTask = m_ListTask;
-        notifyDataSetChanged();
-    }
-
-    @SuppressLint("NotifyDataSetChanged")
-    public void addTask(TaskToDo m_task){
-        _ListTask.add(0,m_task);
-        notifyDataSetChanged();
-    }
-
     public void removeElement(int index){
+        _TD.deleteTask(_ListTask.get(index).getTask());
         _ListTask.remove(index);
         notifyItemRemoved(index);
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void  AddTask(TaskToDo m_task){
+        _TD.insertTask(m_task);
+        notifyDataSetChanged();
     }
 
 }

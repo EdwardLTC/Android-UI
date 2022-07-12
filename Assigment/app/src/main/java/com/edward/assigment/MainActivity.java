@@ -3,15 +3,24 @@ package com.edward.assigment;
 import android.app.Dialog;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Menu;
 
 import com.edward.assigment.Adapter.DialogCustom;
 import com.edward.assigment.Adapter.TaskAdapter;
+import com.edward.assigment.Model.TaskToDo;
+import com.edward.assigment.ui.gallery.GalleryFragment;
 import com.edward.assigment.ui.home.HomeFragment;
+import com.google.android.material.navigation.NavigationBarItemView;
 import com.google.android.material.navigation.NavigationView;
 
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,11 +30,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.edward.assigment.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-    private TaskAdapter _TaskAdapter;
     private static final float END_SCALE = 0.7f;
 
     @Override
@@ -34,9 +44,6 @@ public class MainActivity extends AppCompatActivity {
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
-        _TaskAdapter=  new TaskAdapter(getBaseContext());
-
         setSupportActionBar(binding.appBarMain.toolbar);
         DrawerLayout drawer = binding.drawerLayout;
         NavigationView navigationView = binding.navView;
@@ -65,13 +72,6 @@ public class MainActivity extends AppCompatActivity {
            }
         );
 
-        binding.appBarMain.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showEditDialog();
-            }
-        });
-
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
@@ -81,11 +81,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(navigationView, navController);
     }
 
-    private void showEditDialog() {
-        FragmentManager fm = getSupportFragmentManager();
-        DialogCustom editNameDialogFragment =  DialogCustom.newInstance();
-        editNameDialogFragment.show(fm, "dialog_component");
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,5 +94,9 @@ public class MainActivity extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        return false;
+    }
 
 }
