@@ -27,8 +27,8 @@ import com.edward.assigment.R;
 import java.util.ArrayList;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder>{
-    private ArrayList<TaskToDo> _ListTask;
-    private TaskDAO _TD;
+    private final ArrayList<TaskToDo> _ListTask;
+    private final TaskDAO _TD;
 
     public TaskAdapter(Context context) {
         _TD = new TaskDAO(context);
@@ -43,7 +43,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         return new TaskViewHolder(_view);
     }
 
-    public class TaskViewHolder extends RecyclerView.ViewHolder{
+    public static class TaskViewHolder extends RecyclerView.ViewHolder{
         private final TextView _task;
         private final CheckBox _checkbox;
 

@@ -9,14 +9,12 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
@@ -24,21 +22,16 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.assigment.Adapter.TaskAdapter;
-import com.edward.assigment.MainActivity;
 import com.edward.assigment.Model.TaskDAO;
-import com.edward.assigment.Model.TaskToDo;
 import com.edward.assigment.R;
 import com.edward.assigment.databinding.FragmentHomeBinding;
 import com.edward.assigment.ui.gallery.GalleryFragment;
 import com.google.android.material.navigation.NavigationView;
 
-import java.util.ArrayList;
-
 public class HomeFragment extends Fragment   {
 
     private FragmentHomeBinding binding;
     private TaskAdapter _TaskAdapter;
-    private TaskDAO _TD;
     private Drawable icon;
     private ColorDrawable background;
 
@@ -49,7 +42,7 @@ public class HomeFragment extends Fragment   {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        _TD = new TaskDAO(getActivity());
+        TaskDAO _TD = new TaskDAO(getActivity());
         _TaskAdapter= new TaskAdapter(getActivity());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false);
@@ -110,20 +103,19 @@ public class HomeFragment extends Fragment   {
 
         }).attachToRecyclerView(binding.rclTask);
 
-        binding.fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new GalleryFragment());
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
+        binding.fab.setOnClickListener(view -> {
+            NavigationView navigationView =   requireActivity().findViewById(R.id.nav_view);
+            navigationView.getMenu().getItem(1).setChecked(true);
+            FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new GalleryFragment());
+            fragmentTransaction.commit();
         });
         return root;
     }
 
     @Override
     public void onDestroyView() {
+        Log.d("true", "onDestroyViewHome: ");
         super.onDestroyView();
         binding = null;
     }
