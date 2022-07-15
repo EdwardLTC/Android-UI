@@ -3,15 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <TextView
         android:text="Hello Edward "
         android:textSize="40dp"
-        android:fontFamily=" "
+        style="@style/colorTextRed"
+        android:fontFamily="@font/test"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
+    
+    <Button
+        android:text="Btn"
+        app:backgroundTint="@null"
+        style="@style/colorTextRed"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
+    <Button
+        android:text="Btn"
+        android:layout_marginTop="20dp"
+        app:backgroundTint="@null"
+        style="@style/colorTextRed"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 
+    <ToggleButton
+        android:background="@drawable/style"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"/>
 </LinearLayout>
