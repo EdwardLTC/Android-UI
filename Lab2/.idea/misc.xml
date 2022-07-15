@@ -3,8 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android UI/Android-UI/Lab2/app/src/main/res/drawable/border_btn.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Android-UI/Lab2/app/src/main/res/drawable/edt_style.xml" value="0.1475" />
         <entry key="..\:/Android UI/Android-UI/Lab2/app/src/main/res/drawable/style.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Android-UI/Lab2/app/src/main/res/layout/activity_login.xml" value="0.19746376811594202" />
         <entry key="..\:/Android UI/Android-UI/Lab2/app/src/main/res/layout/activity_main.xml" value="0.19746376811594202" />
+        <entry key="..\:/Android UI/Android-UI/Lab2/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1475" />
+        <entry key="..\:/Android UI/Android-UI/Lab2/app/src/main/res/xml/edit_style.xml" value="0.1489071038251366" />
         <entry key="..\:/Android UI/Android-UI/Lab2/app/src/main/res/xml/style.xml" value="0.19746376811594202" />
       </map>
     </option>

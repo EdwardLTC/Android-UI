@@ -98,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
            fragment = new SlideshowFragment();
         }
         ft.replace(R.id.nav_host_fragment_content_main, Objects.requireNonNull(fragment));
+        ft.addToBackStack(null);
         ft.commit();
         return true;
     }

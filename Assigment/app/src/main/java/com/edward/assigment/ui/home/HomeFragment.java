@@ -110,12 +110,8 @@ public class HomeFragment extends Fragment   {
             fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new GalleryFragment());
             fragmentTransaction.commit();
         });
+
         return root;
-    }
-    @Override
-    public void onResume() {
-        Log.d("test", "onResumeHome: ");
-        super.onResume();
     }
     @Override
     public void onDestroyView() {

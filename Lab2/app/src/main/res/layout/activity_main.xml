@@ -17,7 +17,6 @@
     
     <Button
         android:text="Btn"
-        app:backgroundTint="@null"
         style="@style/colorTextRed"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
@@ -25,7 +24,6 @@
     <Button
         android:text="Btn"
         android:layout_marginTop="20dp"
-        app:backgroundTint="@null"
         style="@style/colorTextRed"
         android:layout_width="match_parent"
         android:layout_height="50dp"/>
