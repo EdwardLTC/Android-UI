@@ -112,7 +112,11 @@ public class HomeFragment extends Fragment   {
         });
         return root;
     }
-
+    @Override
+    public void onResume() {
+        Log.d("test", "onResumeHome: ");
+        super.onResume();
+    }
     @Override
     public void onDestroyView() {
         Log.d("true", "onDestroyViewHome: ");

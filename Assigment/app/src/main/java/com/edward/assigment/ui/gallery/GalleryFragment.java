@@ -54,6 +54,12 @@ public class GalleryFragment extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        Log.d("test", "onResumeGal: ");
+        super.onResume();
+    }
+
+    @Override
     public void onDestroyView() {
         Log.d("true", "onDestroyViewGallery: ");
         super.onDestroyView();
