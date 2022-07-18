@@ -1,10 +1,8 @@
-package com.edward.assigment.Helper;
+package com.edward.assigment.helper;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-
-import androidx.annotation.Nullable;
 
 public class TaskDataBase extends SQLiteOpenHelper {
     public static String DB_NAME = "TaskDB";

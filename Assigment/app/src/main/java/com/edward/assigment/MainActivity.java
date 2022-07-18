@@ -7,7 +7,7 @@ import android.view.View;
 
 import com.edward.assigment.ui.gallery.GalleryFragment;
 import com.edward.assigment.ui.home.HomeFragment;
-import com.edward.assigment.ui.slideshow.SlideshowFragment;
+import com.edward.assigment.ui.setting.SlideshowFragment;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;

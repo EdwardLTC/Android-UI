@@ -1,6 +1,4 @@
-package com.edward.assigment.Model;
-
-import java.util.Date;
+package com.edward.assigment.model;
 
 public class TaskToDo {
     private String task;

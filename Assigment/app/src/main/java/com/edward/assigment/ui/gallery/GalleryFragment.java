@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.edward.assigment.Adapter.TaskAdapter;
-import com.edward.assigment.Model.TaskToDo;
+import com.edward.assigment.adapter.TaskAdapter;
+import com.edward.assigment.model.TaskToDo;
 import com.edward.assigment.R;
 import com.edward.assigment.databinding.FragmentGalleryBinding;
 import com.edward.assigment.ui.home.HomeFragment;

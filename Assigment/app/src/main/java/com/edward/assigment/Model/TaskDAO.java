@@ -1,4 +1,4 @@
-package com.edward.assigment.Model;
+package com.edward.assigment.model;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -6,9 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import androidx.annotation.Nullable;
-
-import com.edward.assigment.Helper.TaskDataBase;
+import com.edward.assigment.helper.TaskDataBase;
 
 import java.util.ArrayList;
 
@@ -24,7 +22,8 @@ public class TaskDAO extends TaskDataBase {
         ArrayList<TaskToDo> list = new ArrayList<>();
         SQLiteDatabase sqLiteDatabase = taskDataBase.getReadableDatabase();
 
-        @SuppressLint("Recycle") Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM TaskDB",null);
+        @SuppressLint("Recycle")
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM TaskDB",null);
         if (cursor.getCount()!=0){
             cursor.moveToFirst();
             do{
@@ -43,7 +42,6 @@ public class TaskDAO extends TaskDataBase {
             value = sqLiteDatabase.insert("TaskDB", null, contentValues);
         }catch (Exception ignored){
         }
-        System.out.println(value);
         return value != -1;
 
     }

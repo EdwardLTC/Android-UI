@@ -21,12 +21,14 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.edward.assigment.Adapter.TaskAdapter;
-import com.edward.assigment.Model.TaskDAO;
+import com.edward.assigment.adapter.TaskAdapter;
+import com.edward.assigment.model.TaskDAO;
+import com.edward.assigment.model.TaskToDo;
 import com.edward.assigment.R;
 import com.edward.assigment.databinding.FragmentHomeBinding;
 import com.edward.assigment.ui.gallery.GalleryFragment;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.snackbar.Snackbar;
 
 public class HomeFragment extends Fragment   {
 
@@ -61,11 +63,19 @@ public class HomeFragment extends Fragment   {
                 return false;
             }
 
+            @SuppressLint("ShowToast")
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
                 if (viewHolder instanceof TaskAdapter.TaskViewHolder){
                     int index = viewHolder.getAdapterPosition();
+                    TaskToDo taskTemp = _TaskAdapter.getTaskIndex(index);
                     _TaskAdapter.removeElement(index);
+                    Snackbar.make(requireActivity().findViewById(android.R.id.content),"Undo ?? ",Snackbar.LENGTH_LONG).setAction("undo", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            _TaskAdapter.undoItem(taskTemp);
+                        }
+                    }).show();
                 }
             }
 

@@ -1,27 +1,20 @@
-package com.edward.assigment.Adapter;
+package com.edward.assigment.adapter;
 
 import android.annotation.SuppressLint;
-import android.content.ClipData;
 import android.content.Context;
 import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.edward.assigment.Model.TaskDAO;
-import com.edward.assigment.Model.TaskToDo;
+import com.edward.assigment.model.TaskDAO;
+import com.edward.assigment.model.TaskToDo;
 import com.edward.assigment.R;
 
 import java.util.ArrayList;
@@ -77,6 +70,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     }
 
+    public TaskToDo getTaskIndex(int index){
+        return _ListTask.get(index);
+    }
+
     @Override
     public int getItemCount() {
         return _ListTask.size();
@@ -94,4 +91,10 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         notifyDataSetChanged();
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    public void undoItem(TaskToDo m_task){
+        _TD.insertTask(m_task);
+        _ListTask.add(m_task);
+        notifyDataSetChanged();
+    }
 }
