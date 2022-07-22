@@ -28,8 +28,8 @@ public class TaskDataBase extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        String sql = "DROP TABLE IF EXISTS  TaskDB";
-        sqLiteDatabase.execSQL(sql);
+        sqLiteDatabase.execSQL( "DROP TABLE IF EXISTS  TaskDB");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS  Account");
         onCreate(sqLiteDatabase);
     }
 }

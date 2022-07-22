@@ -4,30 +4,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
     android:layout_height="match_parent"
     android:background="@drawable/border_main_layout"
     tools:context=".ui.home.HomeFragment">
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageView
+            android:layout_marginLeft="280dp"
+            android:src="@drawable/ic_baseline_find_in_page_24"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"/>
+        <ImageView
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_baseline_notifications_24"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"/>
+      </LinearLayout>
     <TextView
+        android:layout_marginTop="30dp"
+        android:textSize="20dp"
+        android:layout_gravity="center"
         android:textColor="@color/white"
         android:fontFamily="sans-serif"
-        android:text="How are You to day Edward"
+        android:text="How are You to day Edward :>"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <TextView
-        android:layout_marginTop="200dp"
-        android:text="task today"
+        android:layout_marginTop="20dp"
+        android:text="Categories"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:text="somethings but i don't know :>"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        app:backgroundTint="@null"
+        android:background="@drawable/button_categories"
+        android:layout_width="360dp"
+        android:layout_height="140dp" />
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:text="Task's today"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
     <LinearLayout
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:layout_marginBottom="50dp"
         android:layout_width="wrap_content"
-        android:layout_height="300dp">
-
+        android:layout_height="280dp">
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="80dp"
             android:id="@+id/rcl_Task"
             android:layout_width="340dp"
             android:layout_height="wrap_content" />
@@ -37,11 +67,9 @@
         android:id="@+id/fab"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:layout_gravity="bottom|end"
-        android:layout_marginBottom="19dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="300dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/circle_button"
-        app:backgroundTint="@null"
-        />
+        app:backgroundTint="@null" />
 
 </LinearLayout>

@@ -43,6 +43,7 @@ public class GalleryFragment extends Fragment {
                     navigationView.getMenu().getItem(0).setChecked(true);
                     FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new HomeFragment());
+                    fragmentTransaction.addToBackStack(null);
                     fragmentTransaction.commit();
                 }
                 else {

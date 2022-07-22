@@ -97,12 +97,11 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    public boolean undoItem(TaskToDo m_task) {
+    public void undoItem(TaskToDo m_task) { //can used bool ?
         if (_TD.insertTask(m_task)) {
             _ListTask.add(m_task);
             notifyDataSetChanged();
-            return true;
+
         }
-        return false;
     }
 }

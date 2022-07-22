@@ -39,12 +39,9 @@ public class HomeFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        HomeViewModel homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        TaskDAO _TD = new TaskDAO(getActivity());
         _TaskAdapter = new TaskAdapter(getActivity());
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
@@ -124,6 +121,7 @@ public class HomeFragment extends Fragment {
             navigationView.getMenu().getItem(1).setChecked(true);
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new GalleryFragment());
+            fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         });
 

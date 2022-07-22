@@ -5,13 +5,17 @@
       <map>
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/drawable/border_head_negative.xml" value="0.162" />
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/drawable/border_main_layout.xml" value="0.162" />
+        <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/drawable/border_recyleview_component.xml" value="0.162" />
+        <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/drawable/button_categories.xml" value="0.162" />
+        <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/drawable/circle_button.xml" value="0.162" />
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/drawable/ic_baseline_delete_sweep_24.xml" value="0.162" />
+        <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/drawable/img_border.xml" value="0.162" />
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/layout/activity_main.xml" value="0.2318840579710145" />
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/layout/app_bar_main.xml" value="0.2318840579710145" />
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/layout/content_main.xml" value="0.2318840579710145" />
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/layout/dialog_component.xml" value="0.2318840579710145" />
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/layout/fragment_gallery.xml" value="0.2318840579710145" />
-        <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/layout/fragment_home.xml" value="0.2318840579710145" />
+        <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/layout/fragment_slideshow.xml" value="0.2318840579710145" />
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/layout/nav_header_main.xml" value="0.2318840579710145" />
         <entry key="..\:/Android UI/Android-UI/Assigment/app/src/main/res/layout/recycleview_component.xml" value="0.2318840579710145" />
