@@ -1,5 +1,6 @@
 package com.edward.assigment.helper;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -14,8 +15,14 @@ public class TaskDataBase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String sql = "CREATE TABLE TaskDB (Task TEXT)";
-        sqLiteDatabase.execSQL(sql);
+        sqLiteDatabase.execSQL("CREATE TABLE TaskDB (Task TEXT,"+"user TEXT,"+"FOREIGN KEY (user) REFERENCES Account(user) ON DELETE CASCADE)");
+        sqLiteDatabase.execSQL("CREATE TABLE Account (user TEXT  primary key,"+"password TEXT)");
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("user", "admin" );
+        contentValues.put("password","123");
+        sqLiteDatabase.insert("Account",null,contentValues);
+
 
     }
 

@@ -23,7 +23,7 @@ public class TaskDAO extends TaskDataBase {
         SQLiteDatabase sqLiteDatabase = taskDataBase.getReadableDatabase();
 
         @SuppressLint("Recycle")
-        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM TaskDB",null);
+        Cursor cursor = sqLiteDatabase.rawQuery("SELECT * FROM TaskDB",null); //where clause ? primary key
         if (cursor.getCount()!=0){
             cursor.moveToFirst();
             do{
@@ -39,19 +39,18 @@ public class TaskDAO extends TaskDataBase {
             SQLiteDatabase sqLiteDatabase = taskDataBase.getWritableDatabase();
             ContentValues contentValues = new ContentValues();
             contentValues.put("task", task.getTask());
-            value = sqLiteDatabase.insert("TaskDB", null, contentValues);
+            value = sqLiteDatabase.insert("TaskDB", null, contentValues); //where clause ? primary key
         }catch (Exception ignored){
         }
         return value != -1;
 
     }
 
-
     public boolean deleteTask(String task){
         long value = -1;
         try {
             SQLiteDatabase sqLiteDatabase =  taskDataBase.getWritableDatabase();
-            value= sqLiteDatabase.delete("TaskDB","Task = ?", new String[]{String.valueOf(task)});
+            value= sqLiteDatabase.delete("TaskDB","Task = ?", new String[]{String.valueOf(task)});//where clause ? primary key
         }
         catch (Exception ignored){
         }

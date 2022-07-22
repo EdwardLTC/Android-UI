@@ -37,13 +37,18 @@ public class GalleryFragment extends Fragment {
         binding.AddTask.setOnClickListener(view -> {
             String task = binding.newTask.getText().toString();
             if (!task.isEmpty()){
-                _TaskAdapter.AddTask(new TaskToDo(task));
-                binding.newTask.setText("");
-                NavigationView navigationView =   requireActivity().findViewById(R.id.nav_view);
-                navigationView.getMenu().getItem(0).setChecked(true);
-                FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new HomeFragment());
-                fragmentTransaction.commit();
+                if (_TaskAdapter.AddTask(new TaskToDo(task))){
+                    binding.newTask.setText("");
+                    NavigationView navigationView =   requireActivity().findViewById(R.id.nav_view);
+                    navigationView.getMenu().getItem(0).setChecked(true);
+                    FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+                    fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new HomeFragment());
+                    fragmentTransaction.commit();
+                }
+                else {
+                    Snackbar.make(requireActivity().findViewById(android.R.id.content), "Add Task False", Snackbar.LENGTH_LONG).show();
+                }
+
             }
             else {
                 Snackbar.make(requireActivity().findViewById(android.R.id.content), "Your Task is empty", Snackbar.LENGTH_LONG).show();

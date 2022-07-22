@@ -30,7 +30,7 @@ import com.edward.assigment.ui.gallery.GalleryFragment;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.material.snackbar.Snackbar;
 
-public class HomeFragment extends Fragment   {
+public class HomeFragment extends Fragment {
 
     private FragmentHomeBinding binding;
     private TaskAdapter _TaskAdapter;
@@ -45,19 +45,19 @@ public class HomeFragment extends Fragment   {
         View root = binding.getRoot();
 
         TaskDAO _TD = new TaskDAO(getActivity());
-        _TaskAdapter= new TaskAdapter(getActivity());
+        _TaskAdapter = new TaskAdapter(getActivity());
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL,false);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false);
         binding.rclTask.setLayoutManager(linearLayoutManager);
 
         binding.rclTask.setAdapter(_TaskAdapter);
 
-        icon = ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.klee);
+        icon = ContextCompat.getDrawable(binding.getRoot().getContext(), R.drawable.ic_baseline_delete_sweep_24);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             background = new ColorDrawable(binding.getRoot().getContext().getColor(R.color.purple_200));
         }
 
-        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,ItemTouchHelper.LEFT) {
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
             @Override
             public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
                 return false;
@@ -66,16 +66,22 @@ public class HomeFragment extends Fragment   {
             @SuppressLint("ShowToast")
             @Override
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                if (viewHolder instanceof TaskAdapter.TaskViewHolder){
+                if (viewHolder instanceof TaskAdapter.TaskViewHolder) {
                     int index = viewHolder.getAdapterPosition();
                     TaskToDo taskTemp = _TaskAdapter.getTaskIndex(index);
-                    _TaskAdapter.removeElement(index);
-                    Snackbar.make(requireActivity().findViewById(android.R.id.content),"Undo ?? ",Snackbar.LENGTH_LONG).setAction("undo", new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            _TaskAdapter.undoItem(taskTemp);
-                        }
-                    }).show();
+
+                    if (_TaskAdapter.removeElement(index)){
+                        Snackbar.make(requireActivity().findViewById(android.R.id.content), "Undo ?? ", Snackbar.LENGTH_LONG).setAction("undo", new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                _TaskAdapter.undoItem(taskTemp);
+                            }
+                        }).show();
+                    }
+                    else {
+                        Snackbar.make(requireActivity().findViewById(android.R.id.content), "Remove False ", Snackbar.LENGTH_LONG);
+                    }
+
                 }
             }
 
@@ -83,7 +89,7 @@ public class HomeFragment extends Fragment   {
             public void onChildDraw(@NonNull Canvas c, @NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, float dX, float dY, int actionState, boolean isCurrentlyActive) {
                 super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
 
-                dX = dX/10;
+                dX = dX / 10;
                 View itemView = viewHolder.itemView;
                 int backgroundCornerOffset = 20;
 
@@ -91,7 +97,7 @@ public class HomeFragment extends Fragment   {
                 int iconTop = itemView.getTop() + (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
                 int iconBottom = iconTop + icon.getIntrinsicHeight();
 
-                if(dX < 0) {
+                if (dX < 0) {
                     int iconLeft = itemView.getRight() - iconMargin - icon.getIntrinsicWidth();
                     int iconRight = itemView.getRight() - iconMargin;
                     icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
@@ -114,7 +120,7 @@ public class HomeFragment extends Fragment   {
         }).attachToRecyclerView(binding.rclTask);
 
         binding.fab.setOnClickListener(view -> {
-            NavigationView navigationView =   requireActivity().findViewById(R.id.nav_view);
+            NavigationView navigationView = requireActivity().findViewById(R.id.nav_view);
             navigationView.getMenu().getItem(1).setChecked(true);
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new GalleryFragment());
@@ -123,6 +129,7 @@ public class HomeFragment extends Fragment   {
 
         return root;
     }
+
     @Override
     public void onDestroyView() {
         Log.d("true", "onDestroyViewHome: ");
