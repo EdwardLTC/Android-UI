@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/myToolBar"
@@ -13,16 +13,30 @@
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/purple_700"
-        app:menu="@menu/nemu"/>
+        app:menu="@menu/nemu1"/>
+    <ListView
+        android:id="@+id/lisview"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"/>
+    <Button
+        android:id="@+id/btn"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="clickme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
+        android:layout_marginTop="100dp"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/nemu"/>
+        app:menu="@menu/nemu1"/>
 
 </LinearLayout>
