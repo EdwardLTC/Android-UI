@@ -1,8 +1,10 @@
 package com.edward.lab4;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
 import androidx.appcompat.widget.Toolbar;
 
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.os.Bundle;
 import android.view.ContextMenu;
@@ -50,32 +52,33 @@ public class MainActivity extends AppCompatActivity {
         registerForContextMenu(lv);
 
         Button btn= findViewById(R.id.btn);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                PopupMenu popupMenu = new PopupMenu(MainActivity.this,btn);
-                getMenuInflater().inflate(R.menu.nemu1,popupMenu.getMenu());
-                popupMenu.show();
-            }
+        btn.setOnClickListener(view -> {
+            PopupMenu popupMenu = new PopupMenu(MainActivity.this,btn);
+            getMenuInflater().inflate(R.menu.nemu1,popupMenu.getMenu());
+            popupMenu.show();
+
         });
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.nemu1, menu);
+        if(menu instanceof MenuBuilder){
+            MenuBuilder m = (MenuBuilder) menu;
+            m.setOptionalIconsVisible(true);
+        }
         return true;
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         getMenuInflater().inflate(R.menu.nemu1,menu);
+        if(menu instanceof MenuBuilder){
+            MenuBuilder m = (MenuBuilder) menu;
+            m.setOptionalIconsVisible(true);
+        }
     }
-    @Override
-    public boolean onContextItemSelected(MenuItem item) {
-//        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
-
-        return true;
-    }
-
 }

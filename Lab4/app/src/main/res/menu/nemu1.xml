@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:title="haha con ga"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/haha"
         android:icon="@drawable/ic_baseline_auto_graph_24"
-        android:id="@+id/haha"/>
-    <item android:title="haha con ga 1"
+        android:title="haha con ga 0" />
+    <item
+        android:id="@+id/haha1"
         android:icon="@drawable/ic_baseline_auto_graph_24"
-        android:id="@+id/haha1"/>
-    <item android:title="haha con ga 2"
+        android:title="haha con ga 1" />
+    <item
+        android:id="@+id/haha2"
         android:icon="@drawable/ic_baseline_auto_graph_24"
-        android:id="@+id/haha2"/>
+        android:title="haha con ga 2" />
+
 </menu>
+
+
+    <!--    <?xml version="1.0" encoding="utf-8"?>-->
+    <!--<menu xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:All4One="http://schemas.android.com/tools"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto">-->
+    <!--<item-->
+    <!--    android:id="@+id/algo"-->
+    <!--    android:title="nose"-->
+    <!--    All4One:showAsAction="always">-->
+    <!--    <menu>-->
+    <!--        <item-->
+    <!--            android:id="@+id/haha"-->
+    <!--            android:icon="@drawable/ic_baseline_auto_graph_24"-->
+    <!--            android:title="haha con ga" />-->
+    <!--        <item-->
+    <!--            android:id="@+id/haha1"-->
+    <!--            android:icon="@drawable/ic_baseline_auto_graph_24"-->
+    <!--            android:title="haha con ga 1" />-->
+    <!--        <item-->
+    <!--            android:id="@+id/haha2"-->
+    <!--            android:icon="@drawable/ic_baseline_auto_graph_24"-->
+    <!--            android:title="haha con ga 2" />-->
+    <!--    </menu>-->
+    <!--</item>-->
+
+    <!--</menu>-->
