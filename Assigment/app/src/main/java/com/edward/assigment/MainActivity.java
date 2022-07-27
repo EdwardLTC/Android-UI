@@ -1,6 +1,5 @@
 package com.edward.assigment;
 
-import android.app.ActionBar;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -69,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
            }
         );
 
+
+
         mAppBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
                 .setOpenableLayout(drawer)
@@ -77,6 +78,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
     }
+
+
 
     @Override
     public boolean onSupportNavigateUp() {
@@ -94,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id  = item.getItemId();
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         Fragment fragment = null;
         if (id == R.id.nav_home) {
             fragment = new HomeFragment();
@@ -103,9 +106,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else if (id == R.id.nav_slideshow) {
            fragment = new SlideshowFragment();
         }
-        ft.replace(R.id.nav_host_fragment_content_main, Objects.requireNonNull(fragment));
-        ft.addToBackStack(null);
-        ft.commit();
+        fragmentTransaction.replace(R.id.nav_host_fragment_content_main, Objects.requireNonNull(fragment),null);
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.commitAllowingStateLoss();
         return true;
     }
 

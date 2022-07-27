@@ -7,9 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.edward.assigment.adapter.DialogCalendar;
 import com.edward.assigment.adapter.TaskAdapter;
 import com.edward.assigment.model.TaskToDo;
 import com.edward.assigment.R;
@@ -36,12 +38,7 @@ public class GalleryFragment extends Fragment {
             if (!task.isEmpty()){
                 if (_TaskAdapter.AddTask(new TaskToDo(task))){
                     binding.newTask.setText("");
-                    NavigationView navigationView =   requireActivity().findViewById(R.id.nav_view);
-                    navigationView.getMenu().getItem(0).setChecked(true);
-                    FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
-                    fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new HomeFragment());
-                    fragmentTransaction.addToBackStack(null);
-                    fragmentTransaction.commit();
+                    goToHomeFragment();
                 }
                 else {
                     Snackbar.make(requireActivity().findViewById(android.R.id.content), "Add Task False", Snackbar.LENGTH_LONG).show();
@@ -53,6 +50,14 @@ public class GalleryFragment extends Fragment {
             }
 
         });
+
+        binding.calendar.setOnClickListener(view -> {
+            DialogFragment dialogFragment = new DialogCalendar();
+            dialogFragment.show(requireActivity().getSupportFragmentManager(), "Date");
+        });
+
+        binding.icBack.setOnClickListener(view -> goToHomeFragment());
+
         return root;
     }
 
@@ -67,5 +72,15 @@ public class GalleryFragment extends Fragment {
         Log.d("true", "onDestroyViewGallery: ");
         super.onDestroyView();
         binding = null;
+    }
+
+    public void goToHomeFragment(){
+        NavigationView navigationView =  requireActivity().findViewById(R.id.nav_view);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        Fragment fragment = new HomeFragment();
+        FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
+        fragmentTransaction.setReorderingAllowed(true);
+        fragmentTransaction.commitAllowingStateLoss();
     }
 }

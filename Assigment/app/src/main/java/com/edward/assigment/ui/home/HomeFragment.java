@@ -16,13 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.edward.assigment.adapter.TaskAdapter;
-import com.edward.assigment.model.TaskDAO;
 import com.edward.assigment.model.TaskToDo;
 import com.edward.assigment.R;
 import com.edward.assigment.databinding.FragmentHomeBinding;
@@ -68,12 +66,7 @@ public class HomeFragment extends Fragment {
                     TaskToDo taskTemp = _TaskAdapter.getTaskIndex(index);
 
                     if (_TaskAdapter.removeElement(index)){
-                        Snackbar.make(requireActivity().findViewById(android.R.id.content), "Undo ?? ", Snackbar.LENGTH_LONG).setAction("undo", new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                _TaskAdapter.undoItem(taskTemp);
-                            }
-                        }).show();
+                        Snackbar.make(requireActivity().findViewById(android.R.id.content), "Undo ?? ", Snackbar.LENGTH_LONG).setAction("undo", view -> _TaskAdapter.undoItem(taskTemp)).show();
                     }
                     else {
                         Snackbar.make(requireActivity().findViewById(android.R.id.content), "Remove False ", Snackbar.LENGTH_LONG);
@@ -121,8 +114,9 @@ public class HomeFragment extends Fragment {
             navigationView.getMenu().getItem(1).setChecked(true);
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new GalleryFragment());
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            fragmentTransaction.setReorderingAllowed(true);
+            fragmentTransaction.commitAllowingStateLoss();
+
         });
 
         return root;
