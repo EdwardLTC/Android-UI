@@ -1,14 +1,13 @@
 package com.edward.assigment.ui.home;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -35,8 +34,8 @@ public class HomeFragment extends Fragment {
     private Drawable icon;
     private ColorDrawable background;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
@@ -113,9 +112,10 @@ public class HomeFragment extends Fragment {
             NavigationView navigationView = requireActivity().findViewById(R.id.nav_view);
             navigationView.getMenu().getItem(1).setChecked(true);
             FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.exita_home,R.anim.enter_home,R.anim.pop_exit_home,R.anim.pop_enter_home);
             fragmentTransaction.replace(R.id.nav_host_fragment_content_main, new GalleryFragment());
             fragmentTransaction.setReorderingAllowed(true);
-            fragmentTransaction.commitAllowingStateLoss();
+            fragmentTransaction.commit();
 
         });
 
@@ -123,18 +123,7 @@ public class HomeFragment extends Fragment {
     }
 
     @Override
-    public void onDestroyView() {
-        Log.d("true", "onDestroyViewHome: ");
-        super.onDestroyView();
-        binding = null;
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
-
-    @SuppressLint("NotifyDataSetChanged")
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        TaskAdapter taskAdapter = new TaskAdapter(context);
-        taskAdapter.notifyDataSetChanged();
-    }
-
 }

@@ -26,7 +26,7 @@ import com.edward.assigment.databinding.ActivityMainBinding;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private static final float END_SCALE = 0.7f;
@@ -46,39 +46,50 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         View view = findViewById(R.id.app_bar_main);
         drawer.setScrimColor(Color.TRANSPARENT);
         drawer.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
-               @Override
-               public void onDrawerSlide(View drawerView, float slideOffset) {
-                   navigationView.setVisibility(slideOffset > 0 ? View.VISIBLE : View.GONE);
+             @Override
+             public void onDrawerSlide(View drawerView, float slideOffset) {
+                 navigationView.setVisibility(slideOffset > 0 ? View.VISIBLE : View.GONE);
 
-                   final float diffScaledOffset = slideOffset * (1 - END_SCALE);
-                   final float offsetScale = 1 - diffScaledOffset;
-                   view.setScaleX(offsetScale);
-                   view.setScaleY(offsetScale);
+                 final float diffScaledOffset = slideOffset * (1 - END_SCALE);
+                 final float offsetScale = 1 - diffScaledOffset;
+                 view.setScaleX(offsetScale);
+                 view.setScaleY(offsetScale);
 
-                   final float xOffset = drawerView.getWidth() * slideOffset;
-                   final float xOffsetDiff = view.getWidth() * diffScaledOffset / 2;
-                   final float xTranslation = xOffset - xOffsetDiff;
-                   view.setTranslationX(xTranslation);
-               }
+                 final float xOffset = drawerView.getWidth() * slideOffset;
+                 final float xOffsetDiff = view.getWidth() * diffScaledOffset / 2;
+                 final float xTranslation = xOffset - xOffsetDiff;
+                 view.setTranslationX(xTranslation);
+             }
 
-               @Override
-               public void onDrawerClosed(View drawerView) {
-                   navigationView.setVisibility(View.GONE);
-               }
-           }
-        );
+             @Override
+             public void onDrawerClosed(View drawerView) {
+                 navigationView.setVisibility(View.GONE);
+             }
+        });
 
+        mAppBarConfiguration = new AppBarConfiguration.Builder(R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow).setOpenableLayout(drawer).build();
 
-
-        mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow)
-                .setOpenableLayout(drawer)
-                .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
-        NavigationUI.setupWithNavController(navigationView, navController);
+        navigationView.getMenu().getItem(0).setChecked(true);
+        navigationView.setNavigationItemSelectedListener(item -> {
+            int id = item.getItemId();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            Fragment fragment = null;
+            if (id == R.id.nav_home) {
+                fragment = new HomeFragment();
+            } else if (id == R.id.nav_gallery) {
+                fragment = new GalleryFragment();
+            } else if (id == R.id.nav_slideshow) {
+                fragment = new SlideshowFragment();
+            }
+            fragmentTransaction.replace(R.id.nav_host_fragment_content_main, Objects.requireNonNull(fragment), null);
+            fragmentTransaction.setReorderingAllowed(true);
+            fragmentTransaction.commit();
+            drawer.closeDrawers();
+            return true;
+        });
     }
-
 
 
     @Override
@@ -90,26 +101,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        int id  = item.getItemId();
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        Fragment fragment = null;
-        if (id == R.id.nav_home) {
-            fragment = new HomeFragment();
-        } else if (id == R.id.nav_gallery) {
-           fragment = new GalleryFragment();
-        } else if (id == R.id.nav_slideshow) {
-           fragment = new SlideshowFragment();
-        }
-        fragmentTransaction.replace(R.id.nav_host_fragment_content_main, Objects.requireNonNull(fragment),null);
-        fragmentTransaction.setReorderingAllowed(true);
-        fragmentTransaction.commitAllowingStateLoss();
-        return true;
-    }
 
 }

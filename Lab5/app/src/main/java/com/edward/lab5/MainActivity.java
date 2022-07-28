@@ -6,8 +6,8 @@ import androidx.fragment.app.DialogFragment;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 
-import com.edward.lab5.dialong.DateDialog;
-import com.edward.lab5.dialong.TimeDialog;
+import com.edward.lab5.dialog.DateDialog;
+import com.edward.lab5.dialog.TimeDialog;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.edward.lab5.dialong;
+package com.edward.lab5.dialog;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;

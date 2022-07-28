@@ -1,8 +1,8 @@
 package com.edward.assigment.ui.gallery;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -25,8 +25,7 @@ public class GalleryFragment extends Fragment {
     private FragmentGalleryBinding binding;
     private TaskAdapter _TaskAdapter;
 
-    public View onCreateView(@NonNull LayoutInflater inflater,
-                             ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
 
@@ -61,26 +60,19 @@ public class GalleryFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onResume() {
-        Log.d("test", "onResumeGal: ");
-        super.onResume();
-    }
-
-    @Override
-    public void onDestroyView() {
-        Log.d("true", "onDestroyViewGallery: ");
-        super.onDestroyView();
-        binding = null;
-    }
-
     public void goToHomeFragment(){
         NavigationView navigationView =  requireActivity().findViewById(R.id.nav_view);
         navigationView.getMenu().getItem(0).setChecked(true);
         Fragment fragment = new HomeFragment();
         FragmentTransaction fragmentTransaction = getParentFragmentManager().beginTransaction();
+        fragmentTransaction.setCustomAnimations(R.anim.enter,R.anim.exit,R.anim.pop_enter,R.anim.pop_exit);
         fragmentTransaction.replace(R.id.nav_host_fragment_content_main, fragment);
         fragmentTransaction.setReorderingAllowed(true);
         fragmentTransaction.commitAllowingStateLoss();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        return super.onOptionsItemSelected(item);
     }
 }

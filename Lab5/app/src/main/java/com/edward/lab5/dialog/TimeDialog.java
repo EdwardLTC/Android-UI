@@ -1,4 +1,4 @@
-package com.edward.lab5.dialong;
+package com.edward.lab5.dialog;
 
 import android.app.Dialog;
 import android.app.TimePickerDialog;
