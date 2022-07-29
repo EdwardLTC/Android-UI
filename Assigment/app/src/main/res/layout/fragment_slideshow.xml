@@ -75,14 +75,14 @@
             android:text="All Shortcuts" />
 
         <GridView
-            android:nestedScrollingEnabled="true"
             android:id="@+id/grid"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="370dp"
             android:layout_gravity="center"
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:horizontalSpacing="16dp"
+            android:nestedScrollingEnabled="true"
             android:numColumns="2"
             android:padding="16dp"
             android:scrollbars="none"
@@ -92,13 +92,20 @@
             android:nestedScrollingEnabled="true"
             android:id="@+id/expandableListView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
             android:divider="@null"
             android:dividerHeight="10dp"
             android:indicatorRight="?android:attr/expandableListPreferredItemIndicatorRight" />
-
+        <Button
+            android:background="@drawable/button_categories"
+            android:textAlignment="center"
+            android:text="Log Out"
+            app:backgroundTint="@null"
+            android:layout_gravity="center"
+            android:layout_width="350dp"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
 </ScrollView>
