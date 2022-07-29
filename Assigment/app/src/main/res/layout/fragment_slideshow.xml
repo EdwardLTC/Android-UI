@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:nestedScrollingEnabled="true"
     android:fillViewport="true"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
@@ -74,6 +75,7 @@
             android:text="All Shortcuts" />
 
         <GridView
+            android:nestedScrollingEnabled="true"
             android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -87,6 +89,7 @@
             android:verticalSpacing="16dp" />
 
         <ExpandableListView
+            android:nestedScrollingEnabled="true"
             android:id="@+id/expandableListView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

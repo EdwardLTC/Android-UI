@@ -48,6 +48,7 @@ public class SlideshowFragment extends Fragment {
         list.add(new ExpandableChild("Memories", R.drawable.ic_baseline_watch_later_24));
         list.add(new ExpandableChild("Dating", R.drawable.ic_baseline_heart_broken_24));
         list.add(new ExpandableChild("Gaming", R.drawable.ic_baseline_videogame_asset_24));
+
         binding.grid.setAdapter(new GridCustom(list,requireContext()));
 
         return root;
